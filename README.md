@@ -1,4 +1,4 @@
-[![Bluelake](/data/bl2.png)](https://github.com/lancelee82/bluelake)
+[![Bluelake](https://github.com/lancelee82/bluelake/data/bl2.png)](https://github.com/lancelee82/bluelake)
 
 # Bluelake: Pygame Based Framework and Games.
 
