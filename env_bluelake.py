@@ -204,7 +204,7 @@ def gym_env_register_bluelake(
 
     register(
         id=game_id,
-        entry_point='env_bluelake:BBluelakeEnv',
+        entry_point='bluegym.env_bluelake:BBluelakeEnv',
         kwargs=kws,
         timestep_limit=10000,
         nondeterministic=True,
