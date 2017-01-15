@@ -329,9 +329,10 @@ class GMGymRoad(sandroad.GMFlatpath, mxngym.BLMixinGym):
 
     def get_reward_pos_25(self, car_pos_pre=0.0):
 
-        if self.road.position > 0.0 and self.road.position > car_pos_pre and \
-            int(self.road.position) % int(self.road.seg_len) == 0:
-            reward = 0.1
+        if self.road.position > 0.0 and self.road.position > car_pos_pre:
+            pos_sn = int(self.road.position / self.road.seg_len)
+            pre_sn = int(car_pos_pre / self.road.seg_len)
+            reward = float(pos_sn - pre_sn) / 10.0 # float(self.road.seg_len) # 100.0
         elif self.road.position <= car_pos_pre:
             reward = -0.01
         else:
