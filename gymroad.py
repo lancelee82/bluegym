@@ -163,8 +163,8 @@ class GMGymRoad(sandroad.GMFlatpath, mxngym.BLMixinGym):
         #reward = self.get_reward_21()
         #reward = self.get_reward_22()
         #reward = self.get_reward_23(car_pos_pre=car_pos_pre)
-        #o#reward = self.get_reward_24(car_pos_pre=car_pos_pre)
-        reward = self.get_reward_25(car_pos_pre=car_pos_pre)
+        reward = self.get_reward_24(car_pos_pre=car_pos_pre)#o#
+        #t#reward = self.get_reward_25(car_pos_pre=car_pos_pre)
 
         return reward
 
@@ -320,8 +320,9 @@ class GMGymRoad(sandroad.GMFlatpath, mxngym.BLMixinGym):
             return self.road.game_score
 
         r_pos = self.get_reward_pos_25(car_pos_pre=car_pos_pre)
+        r_spd = self.get_reward_spd_25()
 
-        reward = r_pos
+        reward = r_pos + r_spd
 
         #print r_spd, r_rdw, r_pos, reward
 
@@ -330,8 +331,9 @@ class GMGymRoad(sandroad.GMFlatpath, mxngym.BLMixinGym):
     def get_reward_pos_25(self, car_pos_pre=0.0):
 
         if self.road.position > 0.0 and self.road.position > car_pos_pre:
-            pos_sn = int(self.road.position / self.road.seg_len)
-            pre_sn = int(car_pos_pre / self.road.seg_len)
+            d_seg = self.road.seg_len * 2  #1  # 3
+            pos_sn = int(self.road.position / d_seg)
+            pre_sn = int(car_pos_pre / d_seg)
             reward = float(pos_sn - pre_sn) / 10.0 # float(self.road.seg_len) # 100.0
         elif self.road.position <= car_pos_pre:
             reward = -0.01
@@ -340,6 +342,18 @@ class GMGymRoad(sandroad.GMFlatpath, mxngym.BLMixinGym):
 
         return reward
 
+    def get_reward_spd_25(self):
+
+        speed = float(self.road.speed)
+        speed_max = float(self.road.speed_max)
+        speed_max_half = float(self.road.speed_max) / 2.0  #100.0  #
+
+        if speed > speed_max_half:
+            reward = -0.01
+        else:
+            reward = 0.0
+
+        return reward
 
 
     # override
