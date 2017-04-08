@@ -1,4 +1,4 @@
-[![Bluelake](https://github.com/lancelee82/bluelake/data/bl2.png)](https://github.com/lancelee82/bluelake)
+[![Bluelake](https://raw.githubusercontent.com/lancelee82/bluelake/master/data/bl2.png)](https://github.com/lancelee82/bluelake)
 
 # Bluelake: Pygame Based Framework and Games.
 
@@ -8,6 +8,10 @@
 In order to learn Deep Reinforcement Learning with OpenAI Gym and
 [Bluelake](https://github.com/lancelee82/bluelake), Bluegym wraps
 the games and exposes a Gym environment like Atari games.
+
+The main purpose of this project is providing a convenient method
+to design and test functions for Reinforcement Learning, such as
+designing the reward functions, testing action spaces, etc.
 
 
 ## Usage
@@ -36,5 +40,3 @@ def env_make():
 
 my_env = env_make()
 ```
-
-More Details at project [Rockrose](https://github.com/lancelee82/rockrose)
